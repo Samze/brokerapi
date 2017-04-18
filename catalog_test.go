@@ -101,8 +101,8 @@ var _ = Describe("Catalog", func() {
 					Bindable:    brokerapi.BindableValue(true),
 					Free:        brokerapi.FreeValue(true),
 					Metadata: &brokerapi.ServicePlanMetadata{
-						Bullets:     []string{"hello", "its me"},
-						DisplayName: "name",
+						"bullets":     []string{"hello", "its me"},
+						"displayName": "name",
 					},
 				}
 				jsonString := `{
@@ -126,8 +126,8 @@ var _ = Describe("Catalog", func() {
 		Describe("JSON encoding", func() {
 			It("uses the correct keys", func() {
 				metadata := brokerapi.ServicePlanMetadata{
-					Bullets:     []string{"test"},
-					DisplayName: "Some display name",
+					"bullets":     []string{"test"},
+					"displayName": "Some display name",
 				}
 				jsonString := `{"bullets":["test"],"displayName":"Some display name"}`
 

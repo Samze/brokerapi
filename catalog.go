@@ -28,11 +28,7 @@ type ServicePlan struct {
 	Metadata    *ServicePlanMetadata `json:"metadata,omitempty"`
 }
 
-type ServicePlanMetadata struct {
-	DisplayName string            `json:"displayName,omitempty"`
-	Bullets     []string          `json:"bullets,omitempty"`
-	Costs       []ServicePlanCost `json:"costs,omitempty"`
-}
+type ServicePlanMetadata map[string]interface{}
 
 type ServicePlanCost struct {
 	Amount map[string]float64 `json:"amount"`

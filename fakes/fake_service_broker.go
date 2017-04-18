@@ -77,8 +77,7 @@ func (fakeBroker *FakeServiceBroker) Services(context context.Context) []brokera
 					Name:        "default",
 					Description: "The default Cassandra plan",
 					Metadata: &brokerapi.ServicePlanMetadata{
-						Bullets:     []string{},
-						DisplayName: "Cassandra",
+						"displayName": "Cassandra",
 					},
 				},
 			},
