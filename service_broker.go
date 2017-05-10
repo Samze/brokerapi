@@ -42,6 +42,7 @@ type ProvisionDetails struct {
 	OrganizationGUID string          `json:"organization_guid"`
 	SpaceGUID        string          `json:"space_guid"`
 	RawParameters    json.RawMessage `json:"parameters,omitempty"`
+	Context          json.RawMessage `json:"context,omitempty"`
 }
 
 type ProvisionedServiceSpec struct {
@@ -88,6 +89,7 @@ type UpdateDetails struct {
 	PlanID         string          `json:"plan_id"`
 	RawParameters  json.RawMessage `json:"parameters,omitempty"`
 	PreviousValues PreviousValues  `json:"previous_values"`
+	Context        json.RawMessage `json:"context,omitempty"`
 }
 
 type PreviousValues struct {

@@ -264,6 +264,7 @@ var _ = Describe("Service Broker API", func() {
 					"plan_id":           "plan-id",
 					"organization_guid": "organization-guid",
 					"space_guid":        "space-guid",
+					"context":           map[string]interface{}{"platform": "cloudfoundry"},
 				}
 			})
 
@@ -274,10 +275,16 @@ var _ = Describe("Service Broker API", func() {
 					PlanID:           "plan-id",
 					OrganizationGUID: "organization-guid",
 					SpaceGUID:        "space-guid",
+					Context:          []byte("{\"platform\":\"cloudfoundry\"}"),
 				}))
 			})
 
 			It("calls Provision on the service broker with the instance id", func() {
+				makeInstanceProvisioningRequest(instanceID, provisionDetails, "")
+				Expect(fakeServiceBroker.ProvisionedInstanceIDs).To(ContainElement(instanceID))
+			})
+
+			It("calls Provision on the service broker with a context", func() {
 				makeInstanceProvisioningRequest(instanceID, provisionDetails, "")
 				Expect(fakeServiceBroker.ProvisionedInstanceIDs).To(ContainElement(instanceID))
 			})
@@ -486,6 +493,7 @@ var _ = Describe("Service Broker API", func() {
 							PlanID:           "plan-id",
 							OrganizationGUID: "organization-guid",
 							SpaceGUID:        "space-guid",
+							Context:          []byte("{\"platform\":\"cloudfoundry\"}"),
 						}))
 
 						Expect(fakeServiceBroker.ProvisionedInstanceIDs).To(ContainElement(instanceID))
